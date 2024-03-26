@@ -1,0 +1,31 @@
+﻿@model IEnumerable<LabFourShoppingCart.Models.ProductItem>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h2>Products</h2>
+
+<p>Cart Total: @ViewBag.CartTotal $</p>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Description</th>
+            <th>Price</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.Description</td>
+                <td>@item.Price</td>
+                <td>
+                    <a class="btn btn-primary" href="@Url.Action("AddToCart", "Products", new { productCode = item.ProductCode })">Add to Cart</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
